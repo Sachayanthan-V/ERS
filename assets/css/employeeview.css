@@ -1,0 +1,103 @@
+#emprate {
+  width: 40px;
+  padding: 10px;
+  border: black;
+  border-radius: 5px;
+}
+
+.reviewlist {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100vw;
+  height: 85vh;
+  overflow: scroll;
+}
+
+.reviewlist::-webkit-scrollbar {
+  display: none;
+}
+
+.empview {
+  min-width: 400px;
+  min-height: 250px;
+  max-height: 250px;
+  max-width: 500px;
+  background-color: #141414;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 15px;
+}
+.empview div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.empview div h3 {
+  width: 70px;
+}
+.empview div p {
+  width: 10px;
+  color: #09f;
+}
+.empview div h2, .empview div form {
+  margin-left: 10px;
+}
+
+#adminrate {
+  margin-top: 30px;
+}
+
+#main2 {
+  padding-top: 60px;
+  overflow: scroll;
+}
+#main2 h1 > span {
+  color: pink;
+  font-size: 35px;
+  font-weight: 600;
+}
+#main2 .bluespan {
+  color: #09f;
+}
+
+#main2::-webkit-scrollbar {
+  display: none;
+}
+
+#main3 {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#main3 span {
+  color: #09f;
+  font-size: 35px;
+}
+#main3 p {
+  padding: 30px;
+}
+
+#empRatingForm {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#empRatingForm div {
+  width: 100%;
+}
+#empRatingForm div input {
+  margin-left: 10px;
+  min-width: 50px;
+  font-weight: 700;
+  text-align: center;
+  font-size: 24px;
+}
+#empRatingForm button {
+  margin: 0px !important;
+  margin: 20px 0px 0px 20px !important;
+  max-width: 250px !important;
+}/*# sourceMappingURL=employeeview.css.map */

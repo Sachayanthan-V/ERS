@@ -1,0 +1,149 @@
+<link rel="stylesheet" href="/css/justsignin.css">
+<link rel="stylesheet" href="/css/admin.css">
+<link rel="stylesheet" href="/css/employeeview.css">
+
+<section id="postSection">
+
+    <%  if(locals.user) { %>
+
+        <% if(user.emptype == 'Admin') { %>
+
+            <div id="EmployeeSection">
+        
+                <% for(emp of all_emp) { %>
+                    <div id="EmployeeDetails">
+                        <div class="parent">
+                            <div class="child">
+                                <span> Name : </span> 
+                                <h3> <%- emp.name %> </h3>
+                            </div>
+                            <div  class="child">
+                                <span> Email :    </span> 
+                                <p> <%- emp.email %> </p>
+                            </div>
+                            <div class="child">
+                                <span> Category : </span> 
+                                <p> <%- emp.emptype %> </p>
+                            </div>
+                            <div class="child">
+                                <span> Rating : </span> 
+                                <p> <%- emp.rating %> </p>
+                            </div>
+                        </div>
+                        <div class="buttonclass">
+
+                            <form action="/users/switchAdmin/<%= emp.id %>" method="post" autocomplete="off">
+                                <button value="<%- emp.email %>" class="switchAdminBtn"> Switch Admin </button>
+                            </form>
+
+                            <form action="/users/delete/<%= emp.id %>" method="post" autocomplete="off">
+                                <button value="<%= emp.id %>" class="deleteuser" type="submit"> Delete Emp</button>
+                            </form>
+
+                            <% if(!emp.isreview) { %>
+                                <form action="/makereview/create/<%= emp.id %>" method="post" autocomplete="off">
+                                    <button type="submit" value= "<%- emp.email %>" class="assignReviewBtn"> Review Him </button>
+                                </form>
+                            <% } else { %>
+                                <form class="underReviewform" onsubmit="noaction()" autocomplete="off">
+                                    <button type="submit" value="<%- emp.email %>" class="underReview"> Under Review </button>
+                                </form>
+                            <% }  %>
+
+                        </div>
+                        <div class="buttonclass">
+
+                            <% if (! emp.finalrating ) { %>
+                                <form class="ratingform" action="/users/updaterating/<%= emp.id %>" method="post" autocomplete="off">
+                                    <input autocomplete="false"  value="10" max="10" min="1" type="number" name="updatedFinalRating" id="">
+                                    <button id="checkerbtn" type="submit" class="reviewBtn"> Submit </button>
+                                </form>
+                            <% } else { %>
+                                <form class="ratingform"  autocomplete="off">
+                                    <h3> Final Rating allocated :  </h3>
+                                    <h2> <%= emp.finalrating %> </h2>
+                                </form>
+                            <% } %>
+
+                        </div>
+                    </div>
+                <% } %>
+            
+            </div>
+
+        <% } else { %>
+
+            <% if(totalfeed > 0)  { %>
+
+                <div id="main2">
+
+                    <!-- <h1> Just Rate in <span class="bluespan">Reverse</span> <span> ← </span>  direction 🫡🤪</h1> -->
+
+                    <div class="reviewlist">
+
+                        <% for(feed of feedlist) { %>
+                            <% if(feed.emptype=="Employee") { %>
+                                
+                                <div class="empview">
+                                    <div id="name">
+                                        <h3 class="nameheader"> Name    </h3>
+                                        <p  class="colon"     > :      </p>
+                                        <h2 class="namevalue" > <%= feed.name %> </h2>
+                                    </div>
+                                    <div id="emailid">
+                                        <h3 class="nameheader"> Email   </h3>
+                                        <p  class="colon"     > :       </p>
+                                        <h2 class="namevalue" > <%= feed.email %> </h2>
+                                    </div>
+                                    <% if (feed.emptype == "Employee") { %>
+                                        <form action="/users/addrate/<%= user.email %>" method="post" id="empRatingForm">
+                                            <input autocomplete="false"  type="hidden" style="display:none" name="targetID" value="<%= feed.targetid %>" >
+                                            <div>
+                                                <h3 class="nameheader">Rate </h3>
+                                                <p  class="colon"     > :       </p>
+                                                <input autocomplete="false"  type="number" name="rate" id="emprate" min="1" max="10">
+                                            </div>
+                                            <button type="submit">Send</button>
+                                        </form>
+                                    <% } else { %>
+                                            <p id="adminrate"> <span>He is Admin now. </span> Rating only for employee's </p>                                      
+                                    <% } %>
+                                    
+                                </div>
+                                
+                            <% } %>
+                        <% } %>
+                    </div>
+
+                </div>
+            
+            <% } else {  %>
+
+                <div id="main3">
+
+                    <h1> <span> Hey! </span> You are all done. or not assigned any feedback to you. </h1>
+                    <p> Please try after sometime by reload a website. </p>
+
+                </div>
+
+            <% }  %>
+            
+        <% } %>
+
+    <% } else { %>
+
+        <h1 class="request">Please <a href="/users/sign-in"> Sign In </a> or <a href="http://localhost:8001/users/sign-up"> register </a> to Continue</h1>
+
+    <% } %>
+
+</section>
+
+
+<script src="/js/home_posts.js"></script>
+<script>
+
+    function noaction(){
+        return false
+    }
+
+</script>

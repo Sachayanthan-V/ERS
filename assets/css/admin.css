@@ -1,0 +1,124 @@
+section {
+  max-height: 20vh;
+  max-width: 100%;
+  min-width: 100%;
+}
+section h3 {
+  font-size: 25px;
+  margin: 10px 25px;
+  color: green;
+}
+
+#EmployeeSection {
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 85vh;
+  overflow: scroll;
+}
+#EmployeeSection::-webkit-scrollbar {
+  display: none;
+}
+
+#EmployeeDetails {
+  min-width: 300px;
+  min-height: 400px;
+  max-width: 400px;
+  max-height: 400px;
+  margin: 30px 15px 30px 25px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  background-color: #141414;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+#EmployeeDetails .parent {
+  width: 95%;
+  border: 1px solid black;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#EmployeeDetails .parent .child {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  color: white;
+}
+
+span {
+  color: rgb(9, 72, 86);
+  font-size: 23px;
+  margin: 10px 0px;
+  font-weight: 700;
+}
+
+.switchAdminBtn, .assignReviewBtn {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  background-color: rgb(11, 66, 132);
+}
+
+.assignReviewBtn {
+  background-color: rgb(16, 55, 72);
+}
+
+.buttonclass {
+  margin-left: 25px;
+  width: 95%;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.buttonclass input, .buttonclass .reviewBtn {
+  min-height: 25px;
+  padding: 10px 15px;
+}
+.buttonclass input {
+  width: 30%;
+}
+
+form {
+  width: 30%;
+}
+form button {
+  font-size: 16px !important;
+  width: 100% !important;
+  color: white !important;
+  margin-left: 20px !important;
+  font-weight: 700;
+}
+
+.deleteuser {
+  background-color: rgb(188, 82, 17);
+  color: white;
+  font-weight: 700;
+}
+
+.ratingform {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.ratingform input {
+  font-weight: 700;
+  font-size: 20px;
+  background-color: #141414;
+  color: white;
+  border: 1px solid whitesmoke;
+}
+.ratingform button {
+  background-color: red;
+}/*# sourceMappingURL=admin.css.map */

@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="./css/profile.css"> 
+<link rel="stylesheet" href="./css/footer.css"> 
+<link rel="stylesheet" href="./css/sign-up.css"> 
+
+
+<% if(locals.user) { %> 
+
+    <div id="nav">
+        <div id="logo">
+            <a href="/">Home</a>
+            <a href="/users/sign-out">Sign Out</a>
+            <a href="/makereview/check">checkIt</a>
+        </div>
+        <div class="userIdHolder">
+            <img src="/Images/icons8-name-64.png" alt="">
+            <h1>  <%= user.name %> </h1>
+            <% if(user.emptype == 'Admin') { %>
+                <h4 class="AdminTag">ADMIN</h4>
+            <% } else { %>   
+                <h4 class="EmpTag">Employee</h4>
+            <% } %> 
+        </div>
+    </div>
+
+
+<% } else { %>
+    
+    <div id="nav">
+        <div id="logo">
+            <a href="/">Home</a>
+            <a href="/users/sign-in">Sign In</a>
+            <a href="/users/sign-up">Sign Up</a>
+        </div>
+    </div>
+
+    
+<% } %> 
