@@ -29,7 +29,7 @@ app.set("views", "./views");
 
 // to create a new session for users
 app.use( session({
-    name: "codial",
+    name: "ERS",
     secret: "blahsomething",
     saveUninitialized: false,
     resave: false,
