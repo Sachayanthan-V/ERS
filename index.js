@@ -47,7 +47,7 @@ app.use( session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
-app.use(flash());
+app.use(flash()); // using it as notify things.
 app.use(customMware.setFlash);
 app.use("/", routes);
 
