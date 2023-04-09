@@ -1,3 +1,5 @@
+// middleware function for flash usage [ notifying things.] 
+
 module.exports.setFlash = function(req, res, next){
     res.locals.flash = {
         'success' : req.flash('success'),

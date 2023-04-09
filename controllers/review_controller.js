@@ -1,5 +1,8 @@
 const User = require('./../models/user.js');
 
+
+
+//  function to make a particular target employee to add into every other employee's review list except admin and that user.
 module.exports.reviewHim = async function(req, res) {
 
     
@@ -34,18 +37,6 @@ module.exports.reviewHim = async function(req, res) {
         .catch((err)=>{
             console.log(`Error updating a user for review :: ${err}`);
         })
-
-    return res.redirect('back');
-
-}
-
-
-module.exports.check = async function(req, res){
-
-    User.findById("642d14f8d75b8c3be3cb18b8")
-        .then((user)=>{
-            console.log(`User Found :: \n ${user}`);
-        });
 
     return res.redirect('back');
 

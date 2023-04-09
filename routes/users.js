@@ -5,7 +5,7 @@ const passport = require('passport');
 const usersController = require('../controllers/user_controller');
 const homeController = require('./../controllers/home_controller');
 
-router.post('/update/:id', passport.checkAuthentication, usersController.update);
+// routers for several operation done by the users [ either an admin or an employee ].
 router.post('/delete/:id', passport.checkAuthentication, usersController.deleteEmp );
 router.post('/addrate/:id', passport.checkAuthentication, usersController.addRating );
 router.post('/switchAdmin/:id', passport.checkAuthentication, usersController.makeAdmin );

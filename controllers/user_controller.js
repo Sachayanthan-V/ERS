@@ -1,19 +1,7 @@
 const passport = require('passport');
 const User = require('../models/user');
 
-module.exports.update = function(req, res) {
-    if(req.user.id == req.params.id) {
-        User.findByIdAndUpdate( req.params.id, req.body).then((user) => {
-            console.log('Profile Updated');
-            return res.redirect('back');
-        }).catch((err)=>{
-            console.log('Error updating profile'); return res.redirect('back');
-        });
-    }
-    else {
-        return res.status(401).send('Unauthorized');
-    }
-}
+// function for user sign up ::
 
 module.exports.signUp = function(req, res) {
 
@@ -27,6 +15,8 @@ module.exports.signUp = function(req, res) {
 
 }
 
+// function for user sign in ::
+
 module.exports.signIn = function(req, res) {
     if(req.isAuthenticated()){
         return res.redirect('/users');
@@ -37,11 +27,13 @@ module.exports.signIn = function(req, res) {
     });
 }
 
-// for sign in and sign up 
+// create a new user if they register ::
 
 module.exports.create = function(req, res) { 
-    if ( req.body.password != req.body.confirm_password ) { 
-        console.log("Password and confirm password is not matched. Try again...");
+
+    // if both password not match return to same page to do it again.
+    if ( req.body.password != req.body.confirm_password ) {
+        req.flash('success', 'password doesnt match');
         return res.redirect('back');  
     }
 
@@ -52,8 +44,8 @@ module.exports.create = function(req, res) {
 
                 User.create( req.body )
 
-                    .then((newuser)=>{
-                        console.log(`New User Account is created successfully!...`);
+                    .then((newuser)=>{  
+                        req.flash('success', 'Account Created Successfully!...');
                         return res.redirect('/users/sign-in');
                     })
                     .catch((err)=>{
@@ -63,7 +55,8 @@ module.exports.create = function(req, res) {
                 
             }
             if (user) {
-                console.log(`User Name is already Exists`);
+                
+                req.flash('success', 'User Name is already Exists');
                 return res.redirect('back');
             }
 
@@ -74,11 +67,14 @@ module.exports.create = function(req, res) {
 
 }
 
+// create an session for the user who is loggin in
 module.exports.createSession = function(req, res) {
     req.flash('success', 'Logged in successfully');
     return res.redirect('/users');
 }
 
+
+// destroying session while user trying to logout.
 module.exports.destroySession = function(req, res) {
     req.flash('success', 'Logged out successfully');
     req.logout( function(err){ console.log('Logout Error : ', err) } );
@@ -86,6 +82,8 @@ module.exports.destroySession = function(req, res) {
     return res.redirect('/');
 }
 
+
+// This is delete operation to delete an particular employee from the database done only by admin.
 module.exports.deleteEmp = async function(req, res) {
 
     await User.findByIdAndDelete(req.params.id)
@@ -96,6 +94,8 @@ module.exports.deleteEmp = async function(req, res) {
 
 }
 
+
+// This function is make a normal user to admin, and its only accessible by admin
 module.exports.makeAdmin = async function(req, res){
 
     await User.findByIdAndUpdate(req.params.id, {emptype : "Admin"})
@@ -106,6 +106,7 @@ module.exports.makeAdmin = async function(req, res){
 
 }
 
+// function to update an final rating. no rating should not able update after this. This is only accessible by the admins.
 module.exports.updateFinalRating = async function(req, res) {
 
     console.log( "BODY :: => ",  req.body.updatedFinalRating, req.params.id );
@@ -118,14 +119,9 @@ module.exports.updateFinalRating = async function(req, res) {
 
 }
 
-module.exports.addRating = async function(req, res) {
 
-    // console.log("Rating is :", req.body.rate);
-    
-    // console.log("****************");
-    // console.log("Email : ", req.params.id);
-    // console.log("TargetID : ", req.body.targetID);
-    // console.log("****************");
+// for rating we are accessing who is doing and to whom we doing. and manupulating their two data's on this click event.
+module.exports.addRating = async function(req, res) {
     
     await User.findOne({email : req.params.id})
         .then((user)=>{
@@ -185,3 +181,4 @@ module.exports.addRating = async function(req, res) {
 
 }
 
+// 

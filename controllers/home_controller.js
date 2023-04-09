@@ -1,6 +1,7 @@
 const User = require('../models/user');
 
 
+// home page before user logged in
 module.exports.home = async function (req, res) {
 
 	try {
@@ -21,7 +22,7 @@ module.exports.home = async function (req, res) {
 };
 
 
-
+// home page user once logged in :
 module.exports.userHome = async function (req, res) {
 
 	try {

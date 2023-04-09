@@ -4,14 +4,13 @@
 <link rel="stylesheet" href="./css/footer.css"> 
 <link rel="stylesheet" href="./css/sign-up.css"> 
 
-
 <% if(locals.user) { %> 
+    <!-- only user logged in -->
 
     <div id="nav">
         <div id="logo">
             <a href="/">Home</a>
             <a href="/users/sign-out">Sign Out</a>
-            <a href="/makereview/check">checkIt</a>
         </div>
         <div class="userIdHolder">
             <img src="/Images/icons8-name-64.png" alt="">
@@ -24,8 +23,8 @@
         </div>
     </div>
 
-
 <% } else { %>
+    <!-- if user not logged in -->
     
     <div id="nav">
         <div id="logo">

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+
+// The Schema which is holding all kind of user data's inside it.
 const userSchema = new mongoose.Schema({
 
     email : {
@@ -21,9 +23,6 @@ const userSchema = new mongoose.Schema({
     }, 
     reviewlist : {
         type : [String], 
-    },
-    feedbacklist : {
-        type : [String],
     },
     rating : {
         type : Number,
