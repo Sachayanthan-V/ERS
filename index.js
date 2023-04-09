@@ -35,7 +35,7 @@ app.use( session({
     resave: false,
     cookie: { maxAge: 1000 * 60 * 100 },
     store: MongoStore.create({
-          mongoUrl: "mongodb://127.0.0.1:27017/codial",
+          mongoUrl: "mongodb+srv://sachayanthanv1999:JxeAWchTq21VaerQ@cluster0.ajh9ftk.mongodb.net/?retryWrites=true&w=majority",
           autoremove: "disabled",
         },
           function (err) { console.log("error at mongo store", err || "connection established to store cookie" ); }
