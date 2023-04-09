@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://127.0.0.1:27017/ERSv2');
 mongoose.connect('mongodb+srv://sachayanthanv1999:JxeAWchTq21VaerQ@cluster0.ajh9ftk.mongodb.net/?retryWrites=true&w=majority'); // db url with authentication 
 
 const db = mongoose.connection; // establishing a sever
